@@ -7,7 +7,7 @@ import 'package:thrupm/view/navbar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
- 
+
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool exist = prefs.containsKey("id");
 
@@ -52,6 +52,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'THRUPM',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

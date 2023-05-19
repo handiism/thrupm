@@ -47,10 +47,9 @@ class _HomeState extends State<Home> {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   child: ListTile(
-                    leading: const CircleAvatar(
-                      child: Icon(
-                        Icons.person,
-                      ),
+                    leading: CircleAvatar(
+                      child: Image.network(
+                          "https://cdn2.thecatapi.com/images/${cats[index].referenceImageId}.jpg"),
                     ),
                     title: Text(cats[index].name),
                     subtitle: Text(
