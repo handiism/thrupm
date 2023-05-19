@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:thrupm/utils/logger.dart';
-import 'package:thrupm/view/home.dart';
+import 'package:thrupm/view/navbar.dart';
 import 'package:thrupm/view/register.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -119,7 +119,7 @@ class _LoginState extends State<Login> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Home(),
+                        builder: (context) => const NavBar(),
                       ),
                     );
                   } else {

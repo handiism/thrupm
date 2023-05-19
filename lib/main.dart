@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:thrupm/utils/logger.dart';
-import 'package:thrupm/view/login.dart';
+import 'package:thrupm/view/home.dart';
+import 'package:thrupm/view/navbar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+ 
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool exist = prefs.containsKey("id");
 
-  runApp(const MyApp());
+  runApp(MyApp(
+    exist: exist,
+  ));
 
   final db = await openDatabase(
     join(await getDatabasesPath(), "catty.db"),
@@ -34,18 +40,14 @@ void main() async {
     },
     version: 1,
   );
-
   db.close();
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class MyApp extends StatelessWidget {
+  final bool exist;
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
+  const MyApp({super.key, required this.exist});
 
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -53,7 +55,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Login(),
+      home: exist ? const Home() : const NavBar(),
     );
   }
 }
