@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:thrupm/view/home.dart';
+import 'package:thrupm/view/login.dart';
 import 'package:thrupm/view/navbar.dart';
 
 void main() async {
@@ -16,7 +16,7 @@ void main() async {
   ));
 
   final db = await openDatabase(
-    join(await getDatabasesPath(), "catty.db"),
+    join(await getDatabasesPath(), "cats.db"),
     onCreate: (db, version) async {
       await db.transaction(
         (tx) async {
@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: exist ? const Home() : const NavBar(),
+      home: exist ? const NavBar() : const Login(),
     );
   }
 }

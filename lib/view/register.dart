@@ -84,7 +84,7 @@ class _RegisterState extends State<Register> {
                 final username = _usernameController.text;
                 final password = _passwordController.text;
 
-                final dbPath = join(await getDatabasesPath(), "catty.db");
+                final dbPath = join(await getDatabasesPath(), "cats.db");
                 final db = await openDatabase(dbPath);
 
                 try {
