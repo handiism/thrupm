@@ -11,7 +11,7 @@ void main() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool exist = prefs.containsKey("id");
 
-  runApp(MyApp(
+  runApp(TheCatApp(
     exist: exist,
   ));
 
@@ -43,19 +43,19 @@ void main() async {
   db.close();
 }
 
-class MyApp extends StatelessWidget {
+class TheCatApp extends StatelessWidget {
   final bool exist;
 
-  const MyApp({super.key, required this.exist});
+  const TheCatApp({super.key, required this.exist});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'THRUPM',
+      title: 'The Cat App',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(useMaterial3: true),
+      themeMode: ThemeMode.dark,
+      darkTheme: ThemeData.dark(useMaterial3: true),
       home: exist ? const NavBar() : const Login(),
     );
   }
